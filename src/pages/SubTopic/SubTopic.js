@@ -29,8 +29,8 @@ const SubTopic = () => {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
-            <p className="font-bold text-lg">Create a topic list</p>
-            <p className="my-2 mx-6 mt-5">Topic Name</p>
+            <p className="font-bold text-lg">Create a Subtopic list</p>
+            <p className="my-2 mx-6 mt-5">SubTopic Name</p>
             <input
               type="text"
               placeholder="Type here"
