@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import "../../pages/Topic/Topic.scss";
 
 import "whatwg-fetch";
-import Tabile from "./Tabile";
-
-
+import Subtabile from "../../../src/pages/Topic/Subtabile";
 
 const Topic = () => {
-
-
   const [listData, setListData] = useState();
   const handleList = (event) => {
     event.preventDefault();
@@ -44,6 +40,73 @@ const Topic = () => {
               placeholder="Type here"
               className="input input-bordered w-full max-w-xl"
             />
+            <p className="my-2 mx-6 mt-5">Position</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your position"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">News</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your news"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Ariticales</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your ariticales"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Highlights</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your highlights"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Description</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your description"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Main Heading</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your main heading"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">MenuFlag</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your main menuflag"
+              className="input input-bordered w-full max-w-xl"
+            />
+
+
+            <p className="my-2 mx-6 mt-5">Upload Logo</p>
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full max-w-xs mx-6"
+            />
+            <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full max-w-xs mx-6"
+            />
+
+            <div className="mt-3 mx-6 flex items-center">
+            <input type="checkbox" checked="checked" className="checkbox" />
+            <p className="mx-3">please accept tream and condition </p>
+            </div>
+
             <input
               className="btn w-40 flex mx-auto btn-active btn-sm my-2 btn-primary mt-10"
               type="submit"
@@ -58,8 +121,7 @@ const Topic = () => {
 
       <div className="mt-5 lg:mx-60 md:mx-12">
         <div class="md:w-3/3 py-3">
-          
-          <Tabile></Tabile>
+          <Subtabile></Subtabile>
         </div>
       </div>
     </div>

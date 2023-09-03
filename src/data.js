@@ -1,425 +1,201 @@
-export const employees = [{
+export const customers = [{
   ID: 1,
-  FirstName: 'John',
-  LastName: 'Heart',
-  Prefix: 'Mr.',
-  Position: 'CEO',
-  BirthDate: '1964/03/16',
-  HireDate: '1995/01/15',
-  Notes: 'John has been in the Audio/Video industry since 1990. He has led DevAv as its CEO since 2003.\r\n\r\nWhen not working hard as the CEO, John loves to golf and bowl. He once bowled a perfect game of 300.',
-  Address: '351 S Hill St.',
-  StateID: 5,
+  CompanyName: 'Premier Buy',
+  Address: '7601 Penn Avenue South',
+  City: 'Richfield',
+  State: 'Minnesota',
+  Zipcode: 55423,
+  Phone: '(612) 291-1000',
+  Fax: '(612) 291-2001',
+  Website: 'http =//www.nowebsitepremierbuy.com',
 }, {
   ID: 2,
-  FirstName: 'Olivia',
-  LastName: 'Peyton',
-  Prefix: 'Mrs.',
-  Position: 'Sales Assistant',
-  BirthDate: '1981/06/03',
-  HireDate: '2012/05/14',
-  Notes: 'Olivia loves to sell. She has been selling DevAV products since 2012. \r\n\r\nOlivia was homecoming queen in high school. She is expecting her first child in 6 months. Good Luck Olivia.',
-  Address: '807 W Paseo Del Mar',
-  StateID: 5,
+  CompanyName: 'ElectrixMax',
+  Address: '263 Shuman Blvd',
+  City: 'Naperville',
+  State: 'Illinois',
+  Zipcode: 60563,
+  Phone: '(630) 438-7800',
+  Fax: '(630) 438-7801',
+  Website: 'http =//www.nowebsiteelectrixmax.com',
 }, {
   ID: 3,
-  FirstName: 'Robert',
-  LastName: 'Reagan',
-  Prefix: 'Mr.',
-  Position: 'CMO',
-  BirthDate: '1974/09/07',
-  HireDate: '2002/11/08',
-  Notes: 'Robert was recently voted the CMO of the year by CMO Magazine. He is a proud member of the DevAV Management Team.\r\n\r\nRobert is a championship BBQ chef, so when you get the chance ask him for his secret recipe.',
-  Address: '4 Westmoreland Pl.',
-  StateID: 4,
+  CompanyName: 'Video Emporium',
+  Address: '1201 Elm Street',
+  City: 'Dallas',
+  State: 'Texas',
+  Zipcode: 75270,
+  Phone: '(214) 854-3000',
+  Fax: '(214) 854-3001',
+  Website: 'http =//www.nowebsitevideoemporium.com',
 }, {
   ID: 4,
-  FirstName: 'Greta',
-  LastName: 'Sims',
-  Prefix: 'Ms.',
-  Position: 'HR Manager',
-  BirthDate: '1977/11/22',
-  HireDate: '1998/04/23',
-  Notes: "Greta has been DevAV's HR Manager since 2003. She joined DevAV from Sonee Corp.\r\n\r\nGreta is currently training for the NYC marathon. Her best marathon time is 4 hours. Go Greta.",
-  Address: '1700 S Grandview Dr.',
-  StateID: 11,
+  CompanyName: 'Screen Shop',
+  Address: '1000 Lowes Blvd',
+  City: 'Mooresville',
+  State: 'North Carolina',
+  Zipcode: 28117,
+  Phone: '(800) 445-6937',
+  Fax: '(800) 445-6938',
+  Website: 'http =//www.nowebsitescreenshop.com',
 }, {
   ID: 5,
-  FirstName: 'Brett',
-  LastName: 'Wade',
-  Prefix: 'Mr.',
-  Position: 'IT Manager',
-  BirthDate: '1968/12/01',
-  HireDate: '2009/03/06',
-  Notes: 'Brett came to DevAv from Microsoft and has led our IT department since 2012.\r\n\r\nWhen he is not working hard for DevAV, he coaches Little League (he was a high school pitcher).',
-  Address: '1120 Old Mill Rd.',
-  StateID: 13,
+  CompanyName: 'Braeburn',
+  Address: '1 Infinite Loop',
+  City: 'Cupertino',
+  State: 'California',
+  Zipcode: 95014,
+  Phone: '(408) 996-1010',
+  Fax: '(408) 996-1012',
+  Website: 'http =//www.nowebsitebraeburn.com',
 }, {
   ID: 6,
-  FirstName: 'Sandra',
-  LastName: 'Johnson',
-  Prefix: 'Mrs.',
-  Position: 'Controller',
-  BirthDate: '1974/11/15',
-  HireDate: '2005/05/11',
-  Notes: "Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you've not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.",
-  Address: '4600 N Virginia Rd.',
-  StateID: 44,
+  CompanyName: 'PriceCo',
+  Address: '30 Hunter Lane',
+  City: 'Camp Hill',
+  State: 'Pennsylvania',
+  Zipcode: 17011,
+  Phone: '(717) 761-2633',
+  Fax: '(717) 761-2334',
+  Website: 'http =//www.nowebsitepriceco.com',
 }, {
   ID: 7,
-  FirstName: 'Kevin',
-  LastName: 'Carter',
-  Prefix: 'Mr.',
-  Position: 'Shipping Manager',
-  BirthDate: '1978/01/09',
-  HireDate: '2009/08/11',
-  Notes: 'Kevin is our hard-working shipping manager and has been helping that department work like clockwork for 18 months.\r\n\r\nWhen not in the office, he is usually on the basketball court playing pick-up games.',
-  Address: '424 N Main St.',
-  StateID: 5,
+  CompanyName: 'Ultimate Gadget',
+  Address: '1557 Watson Blvd',
+  City: 'Warner Robbins',
+  State: 'Georgia',
+  Zipcode: 31093,
+  Phone: '(995) 623-6785',
+  Fax: '(995) 623-6786',
+  Website: 'http =//www.nowebsiteultimategadget.com',
 }, {
   ID: 8,
-  FirstName: 'Cynthia',
-  LastName: 'Stanwick',
-  Prefix: 'Ms.',
-  Position: 'HR Assistant',
-  BirthDate: '1985/06/05',
-  HireDate: '2008/03/24',
-  Notes: 'Cindy joined us in 2008 and has been in the HR department for 2 years. \r\n\r\nShe was recently awarded employee of the month. Way to go Cindy!',
-  Address: '2211 Bonita Dr.',
-  StateID: 4,
+  CompanyName: 'EZ Stop',
+  Address: '618 Michillinda Ave.',
+  City: 'Arcadia',
+  State: 'California',
+  Zipcode: 91007,
+  Phone: '(626) 265-8632',
+  Fax: '(626) 265-8633',
+  Website: 'http =//www.nowebsiteezstop.com',
 }, {
   ID: 9,
-  FirstName: 'Kent',
-  LastName: 'Samuelson',
-  Prefix: 'Dr.',
-  Position: 'Ombudsman',
-  BirthDate: '1972/09/11',
-  HireDate: '2009/04/22',
-  Notes: 'As our ombudsman, Kent is on the front-lines solving customer problems and helping our partners address issues out in the field.    He is a classically trained musician and is a member of the Chamber Orchestra.',
-  Address: '12100 Mora Dr',
-  StateID: 26,
+  CompanyName: 'Clicker',
+  Address: '1100 W. Artesia Blvd.',
+  City: 'Compton',
+  State: 'California',
+  Zipcode: 90220,
+  Phone: '(310) 884-9000',
+  Fax: '(310) 884-9001',
+  Website: 'http =//www.nowebsiteclicker.com',
 }, {
   ID: 10,
-  FirstName: 'Taylor',
-  LastName: 'Riley',
-  Prefix: 'Mr.',
-  Position: 'Network Admin',
-  BirthDate: '1982/08/14',
-  HireDate: '2012/04/14',
-  Notes: "If you are like the rest of us at DevAV, then you've probably reached out for help from Taylor. He does a great job as a member of our IT department.",
-  Address: '7776 Torreyson Dr',
-  StateID: 5,
-}];
-
-export const states = [{
-  ID: 1,
-  Name: 'Alabama',
-}, {
-  ID: 2,
-  Name: 'Alaska',
-}, {
-  ID: 3,
-  Name: 'Arizona',
-}, {
-  ID: 4,
-  Name: 'Arkansas',
-}, {
-  ID: 5,
-  Name: 'California',
-}, {
-  ID: 6,
-  Name: 'Colorado',
-}, {
-  ID: 7,
-  Name: 'Connecticut',
-}, {
-  ID: 8,
-  Name: 'Delaware',
-}, {
-  ID: 9,
-  Name: 'District of Columbia',
-}, {
-  ID: 10,
-  Name: 'Florida',
+  CompanyName: 'Store of America',
+  Address: '2401 Utah Ave. South',
+  City: 'Seattle',
+  State: 'Washington',
+  Zipcode: 98134,
+  Phone: '(206) 447-1575',
+  Fax: '(206) 447-1576',
+  Website: 'http =//www.nowebsiteamerica.com',
 }, {
   ID: 11,
-  Name: 'Georgia',
+  CompanyName: 'Zone Toys',
+  Address: '1945 S Cienega Boulevard',
+  City: 'Los Angeles',
+  State: 'California',
+  Zipcode: 90034,
+  Phone: '(310) 237-5642',
+  Fax: '(310) 237-5643',
+  Website: 'http =//www.nowebsitezonetoys.com',
 }, {
   ID: 12,
-  Name: 'Hawaii',
+  CompanyName: 'ACME',
+  Address: '2525 E El Segundo Blvd',
+  City: 'El Segundo',
+  State: 'California',
+  Zipcode: 90245,
+  Phone: '(310) 536-0611',
+  Fax: '(310) 536-0612',
+  Website: 'http =//www.nowebsiteacme.com',
 }, {
   ID: 13,
-  Name: 'Idaho',
+  CompanyName: 'Super Mart of the West',
+  Address: '702 SW 8th Street',
+  City: 'Bentonville',
+  State: 'Arkansas',
+  Zipcode: 72716,
+  Phone: '(800) 555-2797',
+  Fax: '(800) 555-2171',
+  Website: 'http://www.nowebsitesupermart.com',
 }, {
   ID: 14,
-  Name: 'Illinois',
+  CompanyName: 'Electronics Depot',
+  Address: '2455 Paces Ferry Road NW',
+  City: 'Atlanta',
+  State: 'Georgia',
+  Zipcode: 30339,
+  Phone: '(800) 595-3232',
+  Fax: '(800) 595-3231',
+  Website: 'http =//www.nowebsitedepot.com',
 }, {
   ID: 15,
-  Name: 'Indiana',
+  CompanyName: 'K&S Music',
+  Address: '1000 Nicllet Mall',
+  City: 'Minneapolis',
+  State: 'Minnesota',
+  Zipcode: 55403,
+  Phone: '(612) 304-6073',
+  Fax: '(612) 304-6074',
+  Website: 'http =//www.nowebsitemusic.com',
 }, {
   ID: 16,
-  Name: 'Iowa',
+  CompanyName: "Tom's Club",
+  Address: '999 Lake Drive',
+  City: 'Issaquah',
+  State: 'Washington',
+  Zipcode: 98027,
+  Phone: '(800) 955-2292',
+  Fax: '(800) 955-2293',
+  Website: 'http =//www.nowebsitetomsclub.com',
 }, {
   ID: 17,
-  Name: 'Kansas',
+  CompanyName: 'E-Mart',
+  Address: '3333 Beverly Rd',
+  City: 'Hoffman Estates',
+  State: 'Illinois',
+  Zipcode: 60179,
+  Phone: '(847) 286-2500',
+  Fax: '(847) 286-2501',
+  Website: 'http =//www.nowebsiteemart.com',
 }, {
   ID: 18,
-  Name: 'Kentucky',
+  CompanyName: 'Walters',
+  Address: '200 Wilmot Rd',
+  City: 'Deerfield',
+  State: 'Illinois',
+  Zipcode: 60015,
+  Phone: '(847) 940-2500',
+  Fax: '(847) 940-2501',
+  Website: 'http =//www.nowebsitewalters.com',
 }, {
   ID: 19,
-  Name: 'Louisiana',
+  CompanyName: 'StereoShack',
+  Address: '400 Commerce S',
+  City: 'Fort Worth',
+  State: 'Texas',
+  Zipcode: 76102,
+  Phone: '(817) 820-0741',
+  Fax: '(817) 820-0742',
+  Website: 'http =//www.nowebsiteshack.com',
 }, {
   ID: 20,
-  Name: 'Maine',
-}, {
-  ID: 21,
-  Name: 'Maryland',
-}, {
-  ID: 22,
-  Name: 'Massachusetts',
-}, {
-  ID: 23,
-  Name: 'Michigan',
-}, {
-  ID: 24,
-  Name: 'Minnesota',
-}, {
-  ID: 25,
-  Name: 'Mississippi',
-}, {
-  ID: 26,
-  Name: 'Missouri',
-}, {
-  ID: 27,
-  Name: 'Montana',
-}, {
-  ID: 28,
-  Name: 'Nebraska',
-}, {
-  ID: 29,
-  Name: 'Nevada',
-}, {
-  ID: 30,
-  Name: 'New Hampshire',
-}, {
-  ID: 31,
-  Name: 'New Jersey',
-}, {
-  ID: 32,
-  Name: 'New Mexico',
-}, {
-  ID: 33,
-  Name: 'New York',
-}, {
-  ID: 34,
-  Name: 'North Carolina',
-}, {
-  ID: 35,
-  Name: 'Ohio',
-}, {
-  ID: 36,
-  Name: 'Oklahoma',
-}, {
-  ID: 37,
-  Name: 'Oregon',
-}, {
-  ID: 38,
-  Name: 'Pennsylvania',
-}, {
-  ID: 39,
-  Name: 'Rhode Island',
-}, {
-  ID: 40,
-  Name: 'South Carolina',
-}, {
-  ID: 41,
-  Name: 'South Dakota',
-}, {
-  ID: 42,
-  Name: 'Tennessee',
-}, {
-  ID: 43,
-  Name: 'Texas',
-}, {
-  ID: 44,
-  Name: 'Utah',
-}, {
-  ID: 45,
-  Name: 'Vermont',
-}, {
-  ID: 46,
-  Name: 'Virginia',
-}, {
-  ID: 47,
-  Name: 'Washington',
-}, {
-  ID: 48,
-  Name: 'West Virginia',
-}, {
-  ID: 49,
-  Name: 'Wisconsin',
-}, {
-  ID: 50,
-  Name: 'Wyoming',
-}, {
-  ID: 51,
-  Name: 'North Dakota',
+  CompanyName: 'Circuit Town',
+  Address: '2200 Kensington Court',
+  City: 'Oak Brook',
+  State: 'Illinois',
+  Zipcode: 60523,
+  Phone: '(800) 955-2929',
+  Fax: '(800) 955-9392',
+  Website: 'http =//www.nowebsitecircuittown.com',
 }];
-
-
-
-export const ungroupedData = [{
-    ID: 1,
-    Name: 'HD Video Player',
-    Category: 'Video Players',
-  }, {
-    ID: 2,
-    Name: 'SuperHD Player',
-    Category: 'Video Players',
-  }, {
-    ID: 3,
-    Name: 'SuperPlasma 50',
-    Category: 'Televisions',
-  }, {
-    ID: 4,
-    Name: 'SuperLED 50',
-    Category: 'Televisions',
-  }, {
-    ID: 5,
-    Name: 'SuperLED 42',
-    Category: 'Televisions',
-  }, {
-    ID: 6,
-    Name: 'SuperLCD 55',
-    Category: 'Televisions',
-  }, {
-    ID: 7,
-    Name: 'SuperLCD 42',
-    Category: 'Televisions',
-  }, {
-    ID: 8,
-    Name: 'SuperPlasma 65',
-    Category: 'Televisions',
-  }, {
-    ID: 9,
-    Name: 'SuperLCD 70',
-    Category: 'Televisions',
-  }, {
-    ID: 10,
-    Name: 'DesktopLED 21',
-    Category: 'Monitors',
-  }, {
-    ID: 11,
-    Name: 'DesktopLED 19',
-    Category: 'Monitors',
-  }, {
-    ID: 12,
-    Name: 'DesktopLCD 21',
-    Category: 'Monitors',
-  }, {
-    ID: 13,
-    Name: 'DesktopLCD 19',
-    Category: 'Monitors',
-  }, {
-    ID: 14,
-    Name: 'Projector Plus',
-    Category: 'Projectors',
-  }, {
-    ID: 15,
-    Name: 'Projector PlusHD',
-    Category: 'Projectors',
-  }, {
-    ID: 16,
-    Name: 'Projector PlusHT',
-    Category: 'Projectors',
-  }, {
-    ID: 17,
-    Name: 'ExcelRemote IR',
-    Category: 'Automation',
-  }, {
-    ID: 18,
-    Name: 'ExcelRemote BT',
-    Category: 'Automation',
-  }, {
-    ID: 19,
-    Name: 'ExcelRemote IP',
-    Category: 'Automation',
-  }];
-  
-  export const pregroupedData = [{
-    Category: 'Video Players',
-    Products: [{
-      ID: 1,
-      Name: 'HD Video Player',
-    }, {
-      ID: 2,
-      Name: 'SuperHD Player',
-    }],
-  }, {
-    Category: 'Televisions',
-    Products: [{
-      ID: 3,
-      Name: 'SuperPlasma 50',
-    }, {
-      ID: 4,
-      Name: 'SuperLED 50',
-    }, {
-      ID: 5,
-      Name: 'SuperLED 42',
-    }, {
-      ID: 6,
-      Name: 'SuperLCD 55',
-    }, {
-      ID: 7,
-      Name: 'SuperLCD 42',
-    }, {
-      ID: 8,
-      Name: 'SuperPlasma 65',
-    }, {
-      ID: 9,
-      Name: 'SuperLCD 70',
-    }],
-  }, {
-    Category: 'Monitors',
-    Products: [{
-      ID: 10,
-      Name: 'DesktopLED 21',
-    }, {
-      ID: 11,
-      Name: 'DesktopLED 19',
-    }, {
-      ID: 12,
-      Name: 'DesktopLCD 21',
-    }, {
-      ID: 13,
-      Name: 'DesktopLCD 19',
-    }],
-  }, {
-    Category: 'Projectors',
-    Products: [{
-      ID: 14,
-      Name: 'Projector Plus',
-    }, {
-      ID: 15,
-      Name: 'Projector PlusHD',
-    }, {
-      ID: 16,
-      Name: 'Projector PlusHT',
-    }],
-  }, {
-    Category: 'Automation',
-    Products: [{
-      ID: 17,
-      Name: 'ExcelRemote IR',
-    }, {
-      ID: 18,
-      Name: 'ExcelRemote BT',
-    }, {
-      ID: 19,
-      Name: 'ExcelRemote IP',
-    }],
-  }];
-  
-  export const ungroupedDataLabel = { 'aria-label': 'Ungrouped Data' };
-  export const pregroupedDataLabel = { 'aria-label': 'Pregrouped Data' };
-  export const templatedUngroupedDataLabel = { 'aria-label': 'Templated Ungrouped Data' };
-  

@@ -1,33 +1,7 @@
-#gridContainer {
-    height: 440px;
+/* 
+  .dx-datagrid {
+    border: 1px solid #372222;
   }
-  
-  .options {
-    padding: 20px;
-    margin-top: 20px;
-    background-color: rgba(191, 191, 191, 0.15);
-  }
-  
-  .caption {
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 18px;
-  }
-  
-  .option {
-    margin-bottom: 10px;
-  }
-  
-  .option > span {
-    position: relative;
-    margin-right: 14px;
-  }
-  
-  .option > div {
-    display: inline-block;
-    font-weight: bold;
-  }
-
-  #data-grid-demo {
-    min-height: 700px;
-  }
+  .dx-datagrid-rowsview {
+    background-color: #f5f5f5;
+  } */
