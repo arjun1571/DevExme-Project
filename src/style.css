@@ -27,3 +27,7 @@
     display: inline-block;
     font-weight: bold;
   }
+
+  #data-grid-demo {
+    min-height: 700px;
+  }
