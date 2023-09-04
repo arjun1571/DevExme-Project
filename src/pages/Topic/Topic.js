@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../../pages/Topic/Topic.scss";
 
 import "whatwg-fetch";
-import Subtabile from "../../../src/pages/Topic/Subtabile";
+import Tabile from "./Tabile";
+
 
 const Topic = () => {
   const [listData, setListData] = useState();
@@ -121,7 +122,7 @@ const Topic = () => {
 
       <div className="mt-5 lg:mx-60 md:mx-12">
         <div class="md:w-3/3 py-3">
-          <Subtabile></Subtabile>
+          <Tabile></Tabile>
         </div>
       </div>
     </div>
