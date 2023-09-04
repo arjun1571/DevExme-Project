@@ -12,14 +12,22 @@ import service from '../../data';
 const exportFormats = ['pdf', 'xlsx']; // Add both export formats
 
 function Tabile() {
-  const [companies, setCompanies] = useState([]);
+  const [topic, setTopic] = useState([]);
+
+  let date = new Date();
+  let date1= date.toString()
+  let date2 =date1.split(" ")
+  const finaldate = date2.slice(1,4)
+  const fullFinalData = finaldate.join(" ");
+  console.log(fullFinalData);
+
 
   useEffect(() => {
     fetch('http://localhost:3001/topic')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setCompanies(data);
+        setTopic(data);
       });
   }, []);
 
@@ -64,11 +72,11 @@ function Tabile() {
           }
         },
       }).then(() => {
-        doc.save('Companies.pdf');
+        doc.save(`topic ${fullFinalData}.pdf`);
       });
     } else if (e.format === 'xlsx') {
       const workbook = new Workbook();
-      const worksheet = workbook.addWorksheet('Companies');
+      const worksheet = workbook.addWorksheet('topic');
 
       worksheet.columns = [
         { width: 5 }, { width: 30 }, { width: 25 }, { width: 15 }, { width: 25 }, { width: 40 },
@@ -100,7 +108,7 @@ function Tabile() {
         },
       }).then(() => {
         workbook.xlsx.writeBuffer().then((buffer) => {
-          saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'Companies.xlsx');
+          saveAs(new Blob([buffer], { type: 'application/octet-stream' }),`topic ${fullFinalData}.xlsx`);
         });
       });
     }
@@ -111,7 +119,7 @@ function Tabile() {
     <div>
       <DataGrid
         id="gridContainer"
-        dataSource={companies}
+        dataSource={topic}
         keyExpr="TopicID"
         showBorders={true}
         onExporting={onExporting}>
