@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Quill from "./Quill";
 
 const Artical = () => {
+  const [topics, setTopics] = useState([]);
+  const [subTopics, setSubTopics] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/topic')
+      .then((res) => res.json())
+      .then((data) => {
+        setTopics(data);
+      });
+  }, []);
+  useEffect(() => {
+    fetch('http://localhost:3001/subtopic')
+      .then((res) => res.json())
+      .then((data) => {
+        setSubTopics(data);
+      });
+  }, []);
   return (
     <div className="lg:p-10 md:p-5 p-3 ">
       <div className="flex md:justify-between justify-around md:border p-2 lg:mx-60  ">
@@ -10,9 +27,10 @@ const Artical = () => {
             <p >Topic</p>
             <div className="relative w-full mx-3 ">
               <select className="md:w-48 w-32 p-2.5 rounded-md shadow-sm outline-none appearance-none focus:border-black">
-                <option>Demo 1</option>
-                <option>Demo 2</option>
-                <option>Demo 3</option>
+                {
+                  topics.map((topic)=><option key={topic.TopicID}>{topic.Name}</option>)
+                }
+               
               </select>
             </div>
           </div>
@@ -22,9 +40,9 @@ const Artical = () => {
             <p>Topic</p>
             <div className="relative w-full lg:max-w-sm mx-3">
               <select className="md:w-48 w-32 p-2.5 rounded-md shadow-sm outline-none appearance-none focus:border-indigo-600">
-                <option>Demo 1</option>
-                <option>Demo 2</option>
-                <option>Demo 3</option>
+              {
+                  subTopics.map((subTopic)=><option key={subTopic.TopicID}>{subTopic.Name}</option>)
+                }
               </select>
             </div>
           </div>
