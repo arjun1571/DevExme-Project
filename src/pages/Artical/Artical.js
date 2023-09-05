@@ -5,7 +5,27 @@ import 'react-quill/dist/quill.snow.css';
 const Artical = () => {
   const [topics, setTopics] = useState([]);
   const [subTopics, setSubTopics] = useState([]);
+  const [data,setData]=useState({})
 
+
+  // post the artical form data 
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/aritical",{
+  //     method: "POST",
+  //     headers:{
+  //       "content-type":"application/json"
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       alert("data submit done")
+  //       console.log(data);
+  //     });
+  // }, []);
+
+  //load teh topic data 
   useEffect(() => {
     fetch("http://localhost:3001/topic")
       .then((res) => res.json())
@@ -13,15 +33,17 @@ const Artical = () => {
         setTopics(data);
       });
   }, []);
+
+  //load the subtopic data
   useEffect(() => {
     fetch("http://localhost:3001/subtopic")
       .then((res) => res.json())
       .then((data) => {
         setSubTopics(data);
-
       });
   }, []);
 
+  //select section data bainding
   const [topicId, setTopicId] = useState(1);
 
   const getData = (id) => {
@@ -37,7 +59,15 @@ const Artical = () => {
     const header =from.header?.value;
     const abstract =from.abstract.value;
     const embed =from.embed.value;
-    console.log(topic,subTopic,header,abstract,embed);
+    // console.log(topic,subTopic,header,abstract,embed);
+    const fomData = {
+      topic,
+      subTopic,
+      header,
+      abstract,
+      embed
+    }
+    setData(fomData)
     from.reset()
   }
 
