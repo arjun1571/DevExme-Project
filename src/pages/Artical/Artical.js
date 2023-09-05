@@ -7,11 +7,13 @@ const Artical = () => {
   const [subTopics, setSubTopics] = useState([]);
   const [data,setData]=useState({})
 
+  console.log(data);
+
 
   // post the artical form data 
 
   // useEffect(() => {
-  //   fetch("http://localhost:3001/aritical",{
+  //   fetch("http://localhost:3001/artical",{
   //     method: "POST",
   //     headers:{
   //       "content-type":"application/json"
@@ -20,10 +22,9 @@ const Artical = () => {
   //   })
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       alert("data submit done")
   //       console.log(data);
   //     });
-  // }, []);
+  // }, [data]);
 
   //load teh topic data 
   useEffect(() => {

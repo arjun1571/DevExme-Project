@@ -4,16 +4,32 @@ import "../../pages/Topic/Topic.scss";
 import "whatwg-fetch";
 import Tabile from "./Tabile";
 
-
 const Topic = () => {
   const [listData, setListData] = useState();
   const handleList = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-    const date = new Date();
-    setListData(name, date);
 
-    console.log(name, date);
+
+    // create a date 
+    let date = new Date();
+    let date1 = date.toString();
+    let date2 = date1.split(" ");
+    const finaldate = date2.slice(1, 4);
+    const fullFinalData = finaldate.join("-");
+
+    const YYYY_MM_DD_Formater = (date, format = "YYYY-MM-DD") => {
+      const t = new Date(date);
+      const y = t.getFullYear();
+      const m = ("0" + (t.getMonth() + 1)).slice(-2);
+      const d = ("0" + t.getDate()).slice(-2);
+      return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
+    };
+    const formateDate = YYYY_MM_DD_Formater(fullFinalData);
+
+
+    setListData(name, formateDate);
+    // console.log(name, formateDate);
     event.target.reset();
   };
 
@@ -91,21 +107,20 @@ const Topic = () => {
               className="input input-bordered w-full max-w-xl"
             />
 
-
             <p className="my-2 mx-6 mt-5">Upload Logo</p>
             <input
               type="file"
-              className="file-input file-input-bordered w-full max-w-xs mx-6"
+              className="file-input file-input-bordered w-full  max-w-[245px] md:max-w-xs md:mx-6 mx-2"
             />
             <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
             <input
               type="file"
-              className="file-input file-input-bordered w-full max-w-xs mx-6"
+              className="file-input file-input-bordered w-full md:max-w-xs max-w-[245px] md:mx-6 mx-2"
             />
 
             <div className="mt-3 mx-6 flex items-center">
-            <input type="checkbox" checked="checked" className="checkbox" />
-            <p className="mx-3">please accept tream and condition </p>
+              <input type="checkbox" checked="checked" className="checkbox" />
+              <p className="mx-3">please accept tream and condition </p>
             </div>
 
             <input

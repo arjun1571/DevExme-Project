@@ -37,8 +37,8 @@ const SubTopic = () => {
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Select Topic</p>
-            <div className="mx-6">
-              <select className="select select-bordered w-full max-w-xs">
+            <div className="mx-5">
+              <select className="select select-bordered w-full max-w-[240px] md:max-w-[360px] ">
                 {subList.map((list) => (
                   <option  >
                     {list.Name}
@@ -46,6 +46,74 @@ const SubTopic = () => {
                 ))}
               </select>
             </div>
+
+            <p className="my-2 mx-6 mt-5">Position</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your position"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">News</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your news"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Ariticales</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your ariticales"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Highlights</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your highlights"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Description</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your description"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">Main Heading</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your main heading"
+              className="input input-bordered w-full max-w-xl"
+            />
+            <p className="my-2 mx-6 mt-5">MenuFlag</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Type Your main menuflag"
+              className="input input-bordered w-full max-w-xl"
+            />
+
+
+            <p className="my-2 mx-6 mt-5">Upload Logo</p>
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full  max-w-[245px] md:max-w-xs mx-5"
+            />
+            <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
+            <input
+              type="file"
+              className="file-input file-input-bordered w-full   max-w-[245px] md:max-w-xs mx-5"
+            />
+
+            <div className="mt-3 mx-6 flex items-center">
+            <input type="checkbox" checked="checked" className="checkbox" />
+            <p className="mx-3">please accept tream and condition </p>
+            </div>
+
             <button className="btn btn-active flex mx-auto btn-sm my-2 mt-10 btn-primary w-40">
               Submit
             </button>
