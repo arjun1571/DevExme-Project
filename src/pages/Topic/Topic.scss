@@ -9,17 +9,15 @@
  
 table {
     border: 2px solid rgb(17, 19, 17);
-    width: 800px;
-    height: 200px;
 }
  
 th {
     border-bottom: 1px solid black;
     padding: 20px;
 }
- 
-td {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid black;
+td{
+    border: 1px solid black!important;
+    // background-color: red;
 }
+ 
+

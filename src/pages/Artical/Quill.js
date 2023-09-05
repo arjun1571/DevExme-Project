@@ -23,12 +23,18 @@ const QuillEditor = () => {
     },
   };
 
+  const handleQuillChange = (content, delta, source, editor) => {
+    // content contains the HTML content of the editor
+    console.log(content);
+    setValue(content); // Optional: You can also update the state if needed
+  };
+
   return (
     <div className='lg:mx-60 bg-white text-black'>
       <ReactQuill
         theme="snow"
         value={value}
-        onChange={setValue}
+        onChange={handleQuillChange} // Attach the event handler
         modules={modules}
       />
       <style jsx>{`
