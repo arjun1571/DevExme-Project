@@ -6,12 +6,59 @@ import Tabile from "./Tabile";
 
 const Topic = () => {
   const [listData, setListData] = useState();
-  const handleList = (event) => {
+
+  const handleList = async (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
+    const from = event?.target;
+    const name = from?.name?.value;
+    const position = from?.position?.value;
+    const news = from?.news?.value;
+    const articale = from?.articale?.value;
+    const highlight = from?.highlight?.value;
+    const description = from?.description?.value;
+    const heading = from?.heading?.value;
+    const mainHeading = from?.main?.value;
+    const menuFlag = from?.menuFlag?.value;
+    const uploadLogo = from?.uploadLogo?.value;
+    const navLogo = from?.navLogo?.value;
 
+    const fomData = {
+      name,
+      position,
+      news,
+      articale,
+      highlight,
+      description,
+      heading,
+      mainHeading,
+      menuFlag,
+      uploadLogo,
+      navLogo,
+    };
 
-    // create a date 
+    try {
+      const response = await fetch("http://localhost:3000/createTopic", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(fomData),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Article added successfully:", responseData);
+      } else {
+        console.error("Error adding article:", response.status);
+      }
+    } catch (error) {
+      console.error("Error adding article:", error);
+    }
+
+    console.log();
+    console.log(listData);
+
+    // create a date
     let date = new Date();
     let date1 = date.toString();
     let date2 = date1.split(" ");
@@ -26,10 +73,9 @@ const Topic = () => {
       return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
     };
     const formateDate = YYYY_MM_DD_Formater(fullFinalData);
-
+    console.log(formateDate);
 
     setListData(name, formateDate);
-    // console.log(name, formateDate);
     event.target.reset();
   };
 
@@ -52,6 +98,7 @@ const Topic = () => {
             <p className="font-bold text-lg">Create a topic list</p>
             <p className="my-2 mx-6 mt-5">Topic Name</p>
             <input
+              required
               name="name"
               type="text"
               placeholder="Type here"
@@ -59,49 +106,56 @@ const Topic = () => {
             />
             <p className="my-2 mx-6 mt-5">Position</p>
             <input
-              name="name"
+              required
+              name="position"
               type="text"
               placeholder="Type Your position"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">News</p>
             <input
-              name="name"
+              required
+              name="news"
               type="text"
               placeholder="Type Your news"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Ariticales</p>
             <input
-              name="name"
+              required
+              name="articale"
               type="text"
               placeholder="Type Your ariticales"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Highlights</p>
             <input
-              name="name"
+              required
+              name="highlight"
               type="text"
               placeholder="Type Your highlights"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Description</p>
             <input
-              name="name"
+              required
+              name="description"
               type="text"
               placeholder="Type Your description"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Main Heading</p>
             <input
-              name="name"
+              required
+              name="main"
               type="text"
               placeholder="Type Your main heading"
               className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">MenuFlag</p>
             <input
-              name="name"
+              required
+              name="menuFlag"
               type="text"
               placeholder="Type Your main menuflag"
               className="input input-bordered w-full max-w-xl"
@@ -109,17 +163,23 @@ const Topic = () => {
 
             <p className="my-2 mx-6 mt-5">Upload Logo</p>
             <input
-              type="file"
-              className="file-input file-input-bordered w-full  max-w-[245px] md:max-w-xs md:mx-6 mx-2"
+              required
+              name="uploadLogo"
+              type="text"
+              placeholder="Type Your main menuflag"
+              className="input input-bordered w-full max-w-xl"
             />
             <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
             <input
-              type="file"
-              className="file-input file-input-bordered w-full md:max-w-xs max-w-[245px] md:mx-6 mx-2"
+              required
+              name="navLogo"
+              type="text"
+              placeholder="Type Your main menuflag"
+              className="input input-bordered w-full max-w-xl"
             />
 
             <div className="mt-3 mx-6 flex items-center">
-              <input type="checkbox" checked="checked" className="checkbox" />
+              <input type="checkbox" className="checkbox" />
               <p className="mx-3">please accept tream and condition </p>
             </div>
 

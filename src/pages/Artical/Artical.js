@@ -5,30 +5,11 @@ import 'react-quill/dist/quill.snow.css';
 const Artical = () => {
   const [topics, setTopics] = useState([]);
   const [subTopics, setSubTopics] = useState([]);
-  const [data,setData]=useState({})
 
-  console.log(data);
-
-
-  // post the artical form data 
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/artical",{
-  //     method: "POST",
-  //     headers:{
-  //       "content-type":"application/json"
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, [data]);
 
   //load teh topic data 
   useEffect(() => {
-    fetch("http://localhost:3001/topic")
+    fetch("http://localhost:3000/topic")
       .then((res) => res.json())
       .then((data) => {
         setTopics(data);
@@ -37,7 +18,7 @@ const Artical = () => {
 
   //load the subtopic data
   useEffect(() => {
-    fetch("http://localhost:3001/subtopic")
+    fetch("http://localhost:3000/subtopic")
       .then((res) => res.json())
       .then((data) => {
         setSubTopics(data);
@@ -45,21 +26,21 @@ const Artical = () => {
   }, []);
 
   //select section data bainding
-  const [topicId, setTopicId] = useState(1);
+  const [topicId, setTopicId] = useState(0);
 
   const getData = (id) => {
     setTopicId(parseInt(id));
   };
   const filteredTopic = subTopics.filter((topic) => topic.TopicID === topicId);
 
-  const handleSubmit=(event)=>{
+  const handleSubmit= async (event)=>{
     event.preventDefault()
-    const from = event.target;
+    const from = event?.target;
     const topic =from.topic?.value;
     const subTopic =from.subtopic?.value;
     const header =from.header?.value;
-    const abstract =from.abstract.value;
-    const embed =from.embed.value;
+    const abstract =from.abstract?.value;
+    const embed =from.embed?.value;
     // console.log(topic,subTopic,header,abstract,embed);
     const fomData = {
       topic,
@@ -68,7 +49,26 @@ const Artical = () => {
       abstract,
       embed
     }
-    setData(fomData)
+
+    try {
+      const response = await fetch("http://localhost:3000/artical", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(fomData),
+      });
+  
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log("Article added successfully:", responseData);
+      } else {
+        console.error("Error adding article:", response.status);
+      }
+    } catch (error) {
+      console.error("Error adding article:", error);
+    }
+    
     from.reset()
   }
 

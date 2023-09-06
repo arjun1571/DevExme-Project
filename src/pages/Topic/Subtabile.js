@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import DataGrid, {
-  Column, Export, Summary, GroupPanel, Grouping, SortByGroupSummaryInfo, TotalItem, Editing, SearchPanel,
+  Column, Export, GroupPanel, Grouping, SortByGroupSummaryInfo, Editing, SearchPanel,
 } from 'devextreme-react/data-grid';
 import { jsPDF } from 'jspdf';
 import { exportDataGrid } from 'devextreme/pdf_exporter';
 import { Workbook } from 'exceljs';
-import { saveAs } from 'file-saver-es'; // Use 'file-saver-es' as you mentioned
+import { saveAs } from 'file-saver-es'; 
 import { exportDataGrid as exportDataGridExcel } from 'devextreme/excel_exporter';
-import service from '../../data';
 
-const exportFormats = ['pdf', 'xlsx']; // Add both export formats
+
+const exportFormats = ['pdf', 'xlsx']; 
 
 function Subtabile() {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/topic')
+    fetch('http://localhost:3000/topic')
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -23,14 +23,7 @@ function Subtabile() {
       });
   }, []);
 
-  const renderGridCell = (data) => (
-    <a href={data.text} target='_blank' rel='noopener noreferrer'>Website</a>
-  );
 
-  const phoneNumberFormat = (value) => {
-    const USNumber = value.match(/(\d{3})(\d{3})(\d{4})/);
-    return `(${USNumber[1]}) ${USNumber[2]}-${USNumber[3]}`;
-  };
 
   const onExporting = (e) => {
     if (e.format === 'pdf') {

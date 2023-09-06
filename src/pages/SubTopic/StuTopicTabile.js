@@ -7,6 +7,8 @@ import DataGrid, {
   SortByGroupSummaryInfo,
   Editing,
   SearchPanel,
+  Paging,
+  Pager,
 } from "devextreme-react/data-grid";
 import { jsPDF } from "jspdf";
 import { exportDataGrid } from "devextreme/pdf_exporter";
@@ -16,7 +18,7 @@ import { exportDataGrid as exportDataGridExcel } from "devextreme/excel_exporter
 
 const exportFormats = ["pdf", "xlsx"]; // Add both export formats
 
-function Tabile() {
+function SubTopicTable() {
   const [topic, setTopic] = useState([]);
 
   let date = new Date();
@@ -27,25 +29,22 @@ function Tabile() {
   const finaldate = date2.slice(1, 4);
   const fullFinalData = finaldate.join("-");
 
-  const YYYY_MM_DD_Formater = (date, format = "YYYY-MM-DD") => {
+  const YYYY_MM_DD_Formatter = (date, format = "YYYY-MM-DD") => {
     const t = new Date(date);
     const y = t.getFullYear();
     const m = ("0" + (t.getMonth() + 1)).slice(-2);
     const d = ("0" + t.getDate()).slice(-2);
     return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
   };
-  const formateDate = YYYY_MM_DD_Formater(fullFinalData);
+  const formatDate = YYYY_MM_DD_Formatter(fullFinalData);
 
   useEffect(() => {
-    fetch("http://localhost:3000/topic")
+    fetch("http://localhost:3000/subtopic")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setTopic(data);
       });
   }, []);
-
-
 
   const onExporting = (e) => {
     if (e.format === "pdf") {
@@ -91,7 +90,7 @@ function Tabile() {
           }
         },
       }).then(() => {
-        doc.save(`topic-${formateDate}-${c}.${d}.pdf`);
+        doc.save(`subtopic-${formatDate}-${c}.${d}.pdf`);
       });
     } else if (e.format === "xlsx") {
       const workbook = new Workbook();
@@ -141,7 +140,7 @@ function Tabile() {
         workbook.xlsx.writeBuffer().then((buffer) => {
           saveAs(
             new Blob([buffer], { type: "application/octet-stream" }),
-            `topic-${formateDate}-${c}.${d}.xlsx`
+            `subtopic-${formatDate}-${c}.${d}.xlsx`
           );
         });
       });
@@ -163,6 +162,12 @@ function Tabile() {
         <Grouping autoExpandAll={true} />
         <SearchPanel visible={true} />
         <SortByGroupSummaryInfo summaryItem="count" />
+        <Paging defaultPageSize={10} />
+        <Pager
+          showPageSizeSelector={true}
+          allowedPageSizes={[5, 10, 20]}
+          showInfo={true}
+        />
 
         <Editing
           mode="form"
@@ -183,4 +188,4 @@ function Tabile() {
   );
 }
 
-export default Tabile;
+export default SubTopicTable;
