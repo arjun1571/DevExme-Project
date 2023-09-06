@@ -3,6 +3,7 @@ import "../../pages/Topic/Topic.scss";
 
 import "whatwg-fetch";
 import Tabile from "./Tabile";
+import { Link } from "react-router-dom";
 
 const Topic = () => {
   const [listData, setListData] = useState();
@@ -87,12 +88,9 @@ const Topic = () => {
           <p className="text-4xl font-bold">Create Topic</p>
         </div>
         {/* Open the modal using ID.showModal() method */}
-        <button
-          className="btn btn-primary btn-outline btn-sm"
-          onClick={() => window.my_modal_2.showModal()}
-        >
-          Create
-        </button>
+        <Link to={'/topic/topicFrom'}>
+          <button className="btn btn-primary btn-outline btn-sm">Create</button>
+        </Link>
         <dialog id="my_modal_2" className="modal">
           <form onSubmit={handleList} method="dialog" className="modal-box">
             <p className="font-bold text-lg">Create a topic list</p>

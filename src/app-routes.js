@@ -3,6 +3,8 @@ import { withNavigationWatcher } from './contexts/navigation';
 import Topic from './pages/Topic/Topic';
 import SubTopic from './pages/SubTopic/SubTopic';
 import Artical from './pages/Artical/Artical';
+import TopicFrom from './pages/Topic/TopicFrom';
+import SubToicForm from './pages/SubTopic/SubTopicForm';
 
 const routes = [
     {
@@ -28,6 +30,14 @@ const routes = [
     {
         path: '/artical',
         element: Artical
+    },
+    {
+        path: '/topic/topicFrom',
+        element: TopicFrom
+    },
+    {
+        path: '/subtopic/subtopicForm',
+        element: SubToicForm
     }
 ];
 

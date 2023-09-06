@@ -26,7 +26,7 @@ const Artical = () => {
   }, []);
 
   //select section data bainding
-  const [topicId, setTopicId] = useState(0);
+  const [topicId, setTopicId] = useState(1);
 
   const getData = (id) => {
     setTopicId(parseInt(id));
