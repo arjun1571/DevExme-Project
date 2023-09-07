@@ -61,7 +61,7 @@ const SubToicForm = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/createSubTopic", {
+      const response = await fetch("http://localhost:3000/subtopic", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

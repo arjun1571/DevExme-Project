@@ -19,6 +19,7 @@ const exportFormats = ["pdf", "xlsx"]; // Add both export formats
 function Tabile() {
   const [topic, setTopic] = useState([]);
 
+
   let date = new Date();
   let c = date.getHours();
   let d = date.getMinutes();
@@ -44,6 +45,25 @@ function Tabile() {
         setTopic(data);
       });
   }, []);
+
+  // deltete function 
+
+  const handleDeleteClick = (e) => {
+    const topicIdToDelete = e.data.TopicID;
+  
+    fetch(`http://localhost:3000/topic/${topicIdToDelete}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Data deleted successfully");
+        const updatedTopic = topic.filter((item) => item.TopicID !== topicIdToDelete);
+        setTopic(updatedTopic);
+      })
+      .catch((error) => {
+        console.error("Error deleting data:", error);
+      });
+  };
 
 
 
@@ -172,6 +192,21 @@ function Tabile() {
         />
         <Column dataField="Name" />
         <Column dataField="CreatedOn" dataType="date" />
+        <Column
+          caption="Action"
+          width={100}
+          alignment="center"
+          cellRender={(cellData) => {
+            return (
+              <button
+                onClick={() => handleDeleteClick(cellData.row)}
+                className="btn-delete"
+              >
+                Delete
+              </button>
+            );
+          }}
+        />
         <Editing
           mode="form"
           allowUpdating={true}

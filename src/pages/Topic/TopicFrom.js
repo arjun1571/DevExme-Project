@@ -12,7 +12,7 @@ const TopicFrom = () => {
   const handleList = async (event) => {
     event.preventDefault();
     const from = event?.target;
-    const name = from?.name?.value;
+    const Name = from?.name?.value;
     const position = from?.position?.value;
     const news = from?.news?.value;
     const articale = from?.articale?.value;
@@ -31,7 +31,7 @@ const TopicFrom = () => {
     
 
     const fomData = {
-      name,
+      Name,
       position,
       news,
       articale,
@@ -52,7 +52,7 @@ const TopicFrom = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/createTopic", {
+      const response = await fetch("http://localhost:3000/topic", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const TopicFrom = () => {
     const formateDate = YYYY_MM_DD_Formater(fullFinalData);
     console.log(formateDate);
 
-    setListData(name, formateDate);
+    setListData(Name, formateDate);
     event.target.reset();
   };
   return (
