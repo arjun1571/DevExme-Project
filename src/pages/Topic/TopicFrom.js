@@ -2,6 +2,12 @@ import React, { useState } from "react";
 
 const TopicFrom = () => {
   const [listData, setListData] = useState();
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggle = () => {
+    setIsToggled(!isToggled);
+    console.log(isToggled);
+  };
 
   const handleList = async (event) => {
     event.preventDefault();
@@ -17,6 +23,12 @@ const TopicFrom = () => {
     const menuFlag = from?.menuFlag?.value;
     const uploadLogo = from?.uploadLogo?.value;
     const navLogo = from?.navLogo?.value;
+    const isActive = isToggled;
+    const sequence =""
+    const createdBy =""
+    const createdOn =""
+    const editOn =""
+    
 
     const fomData = {
       name,
@@ -30,6 +42,13 @@ const TopicFrom = () => {
       menuFlag,
       uploadLogo,
       navLogo,
+      sequence,
+      createdBy,
+      createdOn,
+      editOn,
+      isActive
+
+
     };
 
     try {
@@ -165,7 +184,7 @@ const TopicFrom = () => {
           required
           name="uploadLogo"
           type="text"
-          placeholder="Type Your main menuflag"
+          placeholder="Type Your  menuflag"
           className="input input-bordered "
         />
       </div>
@@ -175,19 +194,19 @@ const TopicFrom = () => {
           required
           name="navLogo"
           type="text"
-          placeholder="Type Your main menuflag"
+          placeholder="Type Your nav logo"
           className="input input-bordered "
         />
       </div>
       </div>
 
-      <div className="mt-3 lg:mx-48 flex items-center">
-        <input type="checkbox" className="checkbox" />
-        <p className="mx-3">please accept tream and condition </p>
+      <div className="mt-5 lg:mx-48 mx-4 flex items-center">
+      <input onChange={handleToggle} type="checkbox" name="isActive" className="toggle toggle-primary"  />
+        <p className="mx-3">Is Active</p>
       </div>
 
       <input
-        className="btn w-40 lg:mx-48 btn-active btn-sm my-2 btn-primary mt-10"
+        className="btn w-40 lg:mx-48 mx-4 btn-active btn-sm my-2 btn-primary mt-10"
         type="submit"
         value={"submit"}
       />

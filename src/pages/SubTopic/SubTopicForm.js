@@ -3,6 +3,12 @@ import React, { useEffect, useState } from "react";
 const SubToicForm = () => {
   const [listData, setListData] = useState();
   const [subList, setSubList] = useState([]);
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggle = () => {
+    setIsToggled(!isToggled);
+    console.log(isToggled);
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/topic")
@@ -27,6 +33,10 @@ const SubToicForm = () => {
     const menuFlag = from?.menuFlag?.value;
     const uploadLogo = from?.uploadLogo?.value;
     const navLogo = from?.navLogo?.value;
+    const sequence =""
+    const createdBy =""
+    const createdOn =""
+    const editOn =""
 
     const fomData = {
       name,
@@ -41,6 +51,11 @@ const SubToicForm = () => {
       menuFlag,
       uploadLogo,
       navLogo,
+      sequence,
+      createdBy,
+      createdOn,
+      editOn,
+
     };
 
     try {
@@ -95,7 +110,7 @@ const SubToicForm = () => {
           required
           name="name"
           type="text"
-          placeholder="Type here"
+          placeholder="Type Yor Name"
           className="input input-bordered "
         />
       </div>
@@ -186,7 +201,7 @@ const SubToicForm = () => {
           required
           name="uploadLogo"
           type="text"
-          placeholder="Type Your main menuflag"
+          placeholder="Type Your logo"
           className="input input-bordered "
         />
       </div>
@@ -196,15 +211,15 @@ const SubToicForm = () => {
           required
           name="navLogo"
           type="text"
-          placeholder="Type Your main menuflag"
+          placeholder="Type Your  nav logo"
           className="input input-bordered "
         />
       </div>
       </div>
 
-      <div className="mt-3 lg:mx-48 flex items-center">
-        <input type="checkbox" className="checkbox" />
-        <p className="mx-3">please accept tream and condition </p>
+      <div className="mt-5 lg:mx-48 flex items-center">
+      <input type="checkbox" onChange={handleToggle} className="toggle toggle-primary"  />
+        <p className="mx-3">Is Active</p>
       </div>
 
       <input
