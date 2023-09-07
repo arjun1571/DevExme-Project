@@ -37,6 +37,7 @@ const SubToicForm = () => {
     const createdBy =""
     const createdOn =""
     const editOn =""
+    const isActive= isToggled;
 
     const fomData = {
       name,
@@ -55,6 +56,7 @@ const SubToicForm = () => {
       createdBy,
       createdOn,
       editOn,
+      isActive,
 
     };
 
@@ -102,15 +104,15 @@ const SubToicForm = () => {
   };
   return (
     <form onSubmit={handleList} className="my-10">
-      <p className="font-bold text-lg lg:px-40">Create a Sub topic list</p>
+      <p className="font-bold text-2sxl mx-6 lg:px-40">Create a Sub Topic List</p>
      <div className="grid grid-cols-2 lg:px-40">
      <div>
-        <p className="my-2 mx-6 mt-5">Topic Name</p>
+        <p className="my-2 mx-6 mt-5">SubTopic Name</p>
         <input
           required
           name="name"
           type="text"
-          placeholder="Type Yor Name"
+          placeholder="Enter Yor name"
           className="input input-bordered "
         />
       </div>
@@ -130,7 +132,7 @@ const SubToicForm = () => {
           required
           name="position"
           type="text"
-          placeholder="Type Your position"
+          placeholder="Enter Your position"
           className="input input-bordered "
         />
       </div>
@@ -140,7 +142,7 @@ const SubToicForm = () => {
           required
           name="news"
           type="text"
-          placeholder="Type Your news"
+          placeholder="Enter Your news"
           className="input input-bordered"
         />
       </div>
@@ -150,7 +152,7 @@ const SubToicForm = () => {
           required
           name="articale"
           type="text"
-          placeholder="Type Your ariticales"
+          placeholder="Enter Your ariticales"
           className="input input-bordered "
         />
       </div>
@@ -160,7 +162,7 @@ const SubToicForm = () => {
           required
           name="highlight"
           type="text"
-          placeholder="Type Your highlights"
+          placeholder="Enter Your highlights"
           className="input input-bordered "
         />
       </div>
@@ -170,7 +172,7 @@ const SubToicForm = () => {
           required
           name="description"
           type="text"
-          placeholder="Type Your description"
+          placeholder="Enter Your description"
           className="input input-bordered "
         />
       </div>
@@ -180,7 +182,7 @@ const SubToicForm = () => {
           required
           name="main"
           type="text"
-          placeholder="Type Your main heading"
+          placeholder="Enter Your main heading"
           className="input input-bordered "
         />
       </div>
@@ -190,7 +192,7 @@ const SubToicForm = () => {
           required
           name="menuFlag"
           type="text"
-          placeholder="Type Your main menuflag"
+          placeholder="Enter Your main menuflag"
           className="input input-bordered "
         />
       </div>
@@ -201,7 +203,7 @@ const SubToicForm = () => {
           required
           name="uploadLogo"
           type="text"
-          placeholder="Type Your logo"
+          placeholder="Enter Your logo"
           className="input input-bordered "
         />
       </div>
@@ -211,7 +213,7 @@ const SubToicForm = () => {
           required
           name="navLogo"
           type="text"
-          placeholder="Type Your  nav logo"
+          placeholder="Enter Your  nav logo"
           className="input input-bordered "
         />
       </div>
