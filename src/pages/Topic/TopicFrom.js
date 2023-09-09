@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const TopicFrom = () => {
-  const [listData, setListData] = useState();
   const [isToggled, setIsToggled] = useState(false);
 
   const handleToggle = () => {
@@ -10,6 +9,23 @@ const TopicFrom = () => {
   };
 
   const handleList = async (event) => {
+    // create a date
+    let date = new Date();
+    let date1 = date.toString();
+    let date2 = date1.split(" ");
+    const finaldate = date2.slice(1, 4);
+    const fullFinalData = finaldate.join("-");
+
+    const YYYY_MM_DD_Formater = (date, format = "YYYY-MM-DD") => {
+      const t = new Date(date);
+      const y = t.getFullYear();
+      const m = ("0" + (t.getMonth() + 1)).slice(-2);
+      const d = ("0" + t.getDate()).slice(-2);
+      return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
+    };
+    const formateDate = YYYY_MM_DD_Formater(fullFinalData);
+    console.log(formateDate);
+// input value 
     event.preventDefault();
     const from = event?.target;
     const Name = from?.name?.value;
@@ -24,11 +40,10 @@ const TopicFrom = () => {
     const uploadLogo = from?.uploadLogo?.value;
     const navLogo = from?.navLogo?.value;
     const isActive = isToggled;
-    const sequence =""
-    const createdBy =""
-    const createdOn =""
-    const editOn =""
-    
+    const sequence = "";
+    const createdBy = "";
+    const CreatedOn = formateDate;
+    const editOn = "";
 
     const fomData = {
       Name,
@@ -44,11 +59,9 @@ const TopicFrom = () => {
       navLogo,
       sequence,
       createdBy,
-      createdOn,
+      CreatedOn,
       editOn,
-      isActive
-
-
+      isActive,
     };
 
     try {
@@ -70,138 +83,122 @@ const TopicFrom = () => {
       console.error("Error adding article:", error);
     }
 
-    console.log();
-    console.log(listData);
-
-    // create a date
-    let date = new Date();
-    let date1 = date.toString();
-    let date2 = date1.split(" ");
-    const finaldate = date2.slice(1, 4);
-    const fullFinalData = finaldate.join("-");
-
-    const YYYY_MM_DD_Formater = (date, format = "YYYY-MM-DD") => {
-      const t = new Date(date);
-      const y = t.getFullYear();
-      const m = ("0" + (t.getMonth() + 1)).slice(-2);
-      const d = ("0" + t.getDate()).slice(-2);
-      return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
-    };
-    const formateDate = YYYY_MM_DD_Formater(fullFinalData);
-    console.log(formateDate);
-
-    setListData(Name, formateDate);
     event.target.reset();
   };
   return (
     <form onSubmit={handleList} className="my-10">
       <p className="font-bold text-2xl mx-6 lg:px-40">Create a Topic List</p>
-     <div className="grid grid-cols-2 lg:px-40">
-     <div>
-        <p className="my-2 mx-6 mt-5">Topic Name</p>
-        <input
-          required
-          name="name"
-          type="text"
-          placeholder="Enter Your name"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">Position</p>
-        <input
-          required
-          name="position"
-          type="text"
-          placeholder="Enter Your position"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">News</p>
-        <input
-          required
-          name="news"
-          type="text"
-          placeholder="Enter Your news"
-          className="input input-bordered"
-        />
-      </div>
-      <div>
-        <p className="my-2 lg:mx-6 mt-5">Ariticales</p>
-        <input
-          required
-          name="articale"
-          type="text"
-          placeholder="Enter Your ariticales"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">Highlights</p>
-        <input
-          required
-          name="highlight"
-          type="text"
-          placeholder="Enter Your highlights"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">Description</p>
-        <input
-          required
-          name="description"
-          type="text"
-          placeholder="Enter Your description"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">Main Heading</p>
-        <input
-          required
-          name="main"
-          type="text"
-          placeholder="Enter Your main heading"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">MenuFlag</p>
-        <input
-          required
-          name="menuFlag"
-          type="text"
-          placeholder="Enter Your main menuflag"
-          className="input input-bordered "
-        />
-      </div>
+      <div className="grid grid-cols-2 lg:px-40">
+        <div>
+          <p className="my-2 mx-6 mt-5">Topic Name</p>
+          <input
+            required
+            name="name"
+            type="text"
+            placeholder="Enter Your name"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Position</p>
+          <input
+            required
+            name="position"
+            type="text"
+            placeholder="Enter Your position"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">News</p>
+          <input
+            required
+            name="news"
+            type="text"
+            placeholder="Enter Your news"
+            className="input input-bordered"
+          />
+        </div>
+        <div>
+          <p className="my-2 lg:mx-6 mt-5">Ariticales</p>
+          <input
+            required
+            name="articale"
+            type="text"
+            placeholder="Enter Your ariticales"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Highlights</p>
+          <input
+            required
+            name="highlight"
+            type="text"
+            placeholder="Enter Your highlights"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Description</p>
+          <input
+            required
+            name="description"
+            type="text"
+            placeholder="Enter Your description"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Main Heading</p>
+          <input
+            required
+            name="main"
+            type="text"
+            placeholder="Enter Your main heading"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">MenuFlag</p>
+          <input
+            required
+            name="menuFlag"
+            type="text"
+            placeholder="Enter Your main menuflag"
+            className="input input-bordered "
+          />
+        </div>
 
-      <div>
-        <p className="my-2 mx-6 mt-5">Upload Logo</p>
-        <input
-          required
-          name="uploadLogo"
-          type="text"
-          placeholder="Enter Your  menuflag"
-          className="input input-bordered "
-        />
-      </div>
-      <div>
-        <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
-        <input
-          required
-          name="navLogo"
-          type="text"
-          placeholder="Enter Your nav logo"
-          className="input input-bordered "
-        />
-      </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Upload Logo</p>
+          <input
+            required
+            name="uploadLogo"
+            type="text"
+            placeholder="Enter Your  menuflag"
+            className="input input-bordered "
+          />
+        </div>
+        <div>
+          <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
+          <input
+            required
+            name="navLogo"
+            type="text"
+            placeholder="Enter Your nav logo"
+            className="input input-bordered "
+          />
+        </div>
       </div>
 
       <div className="mt-5 lg:mx-48 mx-4 flex items-center">
-      <input onChange={handleToggle} type="checkbox" name="isActive" className="toggle toggle-primary"  />
+        <input
+          onChange={handleToggle}
+          type="checkbox"
+          name="isActive"
+          className="toggle toggle-primary"
+        />
         <p className="mx-3">Is Active</p>
       </div>
 
@@ -210,7 +207,6 @@ const TopicFrom = () => {
         type="submit"
         value={"submit"}
       />
-
     </form>
   );
 };
