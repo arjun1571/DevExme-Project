@@ -12,12 +12,14 @@ import { exportDataGrid } from "devextreme/pdf_exporter";
 import { Workbook } from "exceljs";
 import { saveAs } from "file-saver-es"; // Use 'file-saver-es' as you mentioned
 import { exportDataGrid as exportDataGridExcel } from "devextreme/excel_exporter";
+import { RiEditBoxLine } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
 
 const exportFormats = ["pdf", "xlsx"]; // Add both export formats
 
 function ArticalTabile() {
   const [topic, setTopic] = useState([]);
-//   const [updateName,setUpdateName]=useState('')
+  //   const [updateName,setUpdateName]=useState('')
 
   // DATE CONVERTION
   let date = new Date();
@@ -46,58 +48,6 @@ function ArticalTabile() {
         setTopic(data);
       });
   }, []);
-
-  // deltete function
-
-//   const handleDeleteClick = (e) => {
-//     const topicIdToDelete = e.data.TopicID;
-//     fetch(`http://localhost:3000/topic/${topicIdToDelete}`, {
-//       method: "DELETE",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         alert("Data deleted successfully");
-//         const updatedTopic = topic.filter(
-//           (item) => item.TopicID !== topicIdToDelete
-//         );
-//         setTopic(updatedTopic);
-//       })
-//       .catch((error) => {
-//         console.error("Error deleting data:", error);
-//       });
-//   };
-//   const updateData=(e)=>{
-//     e.preventDefault()
-//     const name = e.target.name.value
-//     setUpdateName(name)
-//     e.target.reset()
-
-//   }
-//   console.log(updateName);
-
-  // handleUpdate
-//   const handleUpdate = (e) => {
-//     const topicIDToUpdate = e.data.TopicID;
-//     console.log("hello",topicIDToUpdate);
-
-
-//     fetch(`http://localhost:3000/topics/${topicIDToUpdate}`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ Name: updateName }),
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         alert("Data updated successfully");
-//         // Handle the updated data as needed
-//       })
-//       .catch((error) => {
-//         console.error("Error updating data:", error);
-//       });
-    
-//   };
 
   const onExporting = (e) => {
     if (e.format === "pdf") {
@@ -201,6 +151,26 @@ function ArticalTabile() {
     e.cancel = true;
   };
 
+    // handle delete tabile data 
+    const handleDeleteClick = (e) => {
+      const topicIdToDelete = e.data.TopicID;
+      console.log(topicIdToDelete);
+      fetch(`http://localhost:3000/artical/${topicIdToDelete}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert("Data deleted successfully");
+          const updatedTopic = topic.filter(
+            (item) => item.TopicID !== topicIdToDelete
+          );
+          setTopic(updatedTopic);
+        })
+        .catch((error) => {
+          console.error("Error deleting data:", error);
+        });
+    };
+
   return (
     <div>
       <DataGrid
@@ -228,40 +198,12 @@ function ArticalTabile() {
           cellRender={(cellData) => {
             return (
               <>
-                <label className="btn btn-sm btn-primary btn-outline duration-200"
+                <label
+                  className="btn btn-sm btn-info btn-outline duration-200"
                   htmlFor="my_modal_7"
                 >
-                  Edit
+                  <RiEditBoxLine className="w-5 h-8" />
                 </label>
-
-                {/* Put this part before </body> tag */}
-                <input
-                  type="checkbox"
-                  id="my_modal_7"
-                  className="modal-toggle"
-                />
-                <div className="modal">
-                  <form  className="modal-box">
-                    <p className="py-4">Update Your Topic</p>
-                    <p>Topic Name</p>
-                    <input
-
-                      type="text"
-                      name="name"
-                      placeholder="Enter Topic Name"
-                      className="input input-bordered w-full max-w-xs"
-                    />
-
-                    <input
-                      className="btn btn-primary mx-2"
-                      type="submit"
-                      value={"submit"}
-                    />
-                  </form>
-                  <label className="modal-backdrop" htmlFor="my_modal_7">
-                    Close
-                  </label>
-                </div>
               </>
             );
           }}
@@ -274,62 +216,14 @@ function ArticalTabile() {
             return (
               <button
               className="btn btn-sm btn-error btn-outline duration-50 btn-delete" 
-               
+                onClick={() => handleDeleteClick(cellData.row)}
                 
               >
-                Delete
+                <MdDelete className="w-5  h-8" />
               </button>
             );
           }}
         />
-        {/* <Column
-          caption="Action"
-          width={100}
-          alignment="center"
-          cellRender={(cellData) => {
-            return (
-              <button
-                onClick={() => handleDeleteClick(cellData.row)}
-                className="btn-delete"
-              >
-                Delete
-              </button>
-            );
-          }}
-        /> */}
-        {/* <Column
-          caption="Action"
-          width={100}
-          alignment="center"
-          cellRender={(cellData) => {
-            return (
-              <>
-                <label htmlFor="my_modal_7">
-                  Update
-                </label>
-                <input
-                  type="checkbox"
-                  id="my_modal_7"
-                  className="modal-toggle"
-                />
-                <div className="modal">
-                  <form onSubmit={updateData} className="modal-box">
-                    <p className="py-4">
-                      Update Your Topic
-                    </p>
-                    <p>Topic Name</p>
-                    <input type="text" name="name" placeholder="Enter Topic Name" className="input input-bordered w-full max-w-xs" />
-
-                    <input onClick={() => handleUpdate(cellData.row)}  className="btn btn-primary mx-2" type="submit" value={"submit"} />
-                  </form>
-                  <label className="modal-backdrop" htmlFor="my_modal_7">
-                    Close
-                  </label>
-                </div>
-              </>
-            );
-          }}
-        /> */}
       </DataGrid>
     </div>
   );

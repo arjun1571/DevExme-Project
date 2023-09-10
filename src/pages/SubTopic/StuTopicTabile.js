@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { MdDelete } from 'react-icons/md';
+import { RiEditBoxLine } from 'react-icons/ri';
 import DataGrid, {
   Column,
   Export,
   GroupPanel,
   Grouping,
   SortByGroupSummaryInfo,
-  Editing,
   SearchPanel,
   Paging,
   Pager,
@@ -148,6 +149,26 @@ function SubTopicTable() {
     e.cancel = true;
   };
 
+  // handle delete tabile data 
+  const handleDeleteClick = (e) => {
+    const topicIdToDelete = e.data.TopicID;
+    console.log(topicIdToDelete);
+    fetch(`http://localhost:3000/subtopic/${topicIdToDelete}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Data deleted successfully");
+        const updatedTopic = topic.filter(
+          (item) => item.TopicID !== topicIdToDelete
+        );
+        setTopic(updatedTopic);
+      })
+      .catch((error) => {
+        console.error("Error deleting data:", error);
+      });
+  };
+
   return (
     <div>
       <DataGrid
@@ -179,10 +200,11 @@ function SubTopicTable() {
           cellRender={(cellData) => {
             return (
               <>
-                <label className="btn btn-sm btn-primary btn-outline duration-200"
+                <label className="btn btn-sm btn-info btn-outline duration-200"
                   htmlFor="my_modal_7"
                 >
-                  Edit
+                  
+                  <RiEditBoxLine className="w-5 h-8" />
                 </label>
 
                 {/* Put this part before </body> tag */}
@@ -225,10 +247,10 @@ function SubTopicTable() {
             return (
               <button
               className="btn btn-sm btn-error btn-outline duration-50 btn-delete" 
-               
+                onClick={() => handleDeleteClick(cellData.row)}
                 
               >
-                Delete
+                <MdDelete className="w-5  h-8" />
               </button>
             );
           }}

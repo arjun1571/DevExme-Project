@@ -12,12 +12,13 @@ const TopicFrom = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
+
+  // get the query prams 
   const quearyString = location.search;
   const queryParams = new URLSearchParams(quearyString);
-
   const id = queryParams.get('id')
-  console.log('arjun', id)
 
+// get the defult value use load data 
 
   useEffect(()=>{
     fetch(`http://localhost:3000/topic/${id}`)
@@ -28,7 +29,6 @@ const TopicFrom = () => {
     })
   },[id])
 
-  console.log(defaultValue);
 
   const handleList = async (event) => {
     // create a date
@@ -167,12 +167,7 @@ const TopicFrom = () => {
       editOn,
       isActive,
     };
-    // const name = event.target.name.value;
-    // console.log('ok',name);
-    // const topicIDToUpdate = event?.data?.TopicID;
-    // const topicName1 = event?.data?.Name;
-    // console.log("hello", topicIDToUpdate);
-    // console.log("hello2", topicName1);
+
 
     fetch(`http://localhost:3000/topic/${id}`, {
       method: "PUT",
@@ -207,7 +202,7 @@ const TopicFrom = () => {
   // marge handle submit 
   const margeSubmit =(event)=>{
     event.preventDefault();
-    if(id=== null){
+    if(id === null){
       handleList(event);
     }
     else{
@@ -222,7 +217,7 @@ const TopicFrom = () => {
       <p className="font-bold text-2xl mx-6 lg:px-40">Create a Topic List</p>
       <div className="grid grid-cols-2 lg:px-40">
         <div>
-          <p className="my-2 mx-6 mt-5">Topic Name</p>
+          <p className="my-2 mx-6 mt-5">Topic Name <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.Name}
             required
@@ -233,7 +228,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">Position</p>
+          <p className="my-2 mx-6 mt-5">Position <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.position}
             required
@@ -244,7 +239,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">News</p>
+          <p className="my-2 mx-6 mt-5">News <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.news}
             required
@@ -255,7 +250,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 lg:mx-6 mt-5">Ariticales</p>
+          <p className="my-2 lg:mx-6 mt-5">Ariticales <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.articale}
             required
@@ -266,7 +261,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">highlight</p>
+          <p className="my-2 mx-6 mt-5">highlight <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.articale}
             required
@@ -277,7 +272,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">Description</p>
+          <p className="my-2 mx-6 mt-5">Description <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.description}
             required
@@ -288,7 +283,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">Main Heading</p>
+          <p className="my-2 mx-6 mt-5">Main Heading <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.mainHeading}
             required
@@ -299,7 +294,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">MenuFlag</p>
+          <p className="my-2 mx-6 mt-5">MenuFlag <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.menuFlag}
             required
@@ -311,7 +306,7 @@ const TopicFrom = () => {
         </div>
 
         <div>
-          <p className="my-2 mx-6 mt-5">Upload Logo</p>
+          <p className="my-2 mx-6 mt-5">Upload Logo <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.uploadLogo}
             required
@@ -322,7 +317,7 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
+          <p className="my-2 mx-6 mt-5">Upload Nav Logo <span className="text-red-700 font-bold text-lg">*</span></p>
           <input
           defaultValue={defaultValue?.navLogo}
             required
