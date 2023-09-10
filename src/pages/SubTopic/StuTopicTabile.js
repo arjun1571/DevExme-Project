@@ -16,11 +16,13 @@ import { exportDataGrid } from "devextreme/pdf_exporter";
 import { Workbook } from "exceljs";
 import { saveAs } from "file-saver-es"; // Use 'file-saver-es' as you mentioned
 import { exportDataGrid as exportDataGridExcel } from "devextreme/excel_exporter";
+import { useNavigate } from "react-router-dom";
 
 const exportFormats = ["pdf", "xlsx"]; // Add both export formats
 
 function SubTopicTable() {
   const [topic, setTopic] = useState([]);
+  const navigate = useNavigate()
 
   let date = new Date();
   let c = date.getHours();
@@ -151,16 +153,16 @@ function SubTopicTable() {
 
   // handle delete tabile data 
   const handleDeleteClick = (e) => {
-    const topicIdToDelete = e.data.TopicID;
-    console.log(topicIdToDelete);
-    fetch(`http://localhost:3000/subtopic/${topicIdToDelete}`, {
+    const SubTopicIDToDelete = e.data.SubTopicID;
+    console.log(SubTopicIDToDelete);
+    fetch(`http://localhost:3000/subtopic/${SubTopicIDToDelete}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         alert("Data deleted successfully");
         const updatedTopic = topic.filter(
-          (item) => item.TopicID !== topicIdToDelete
+          (item) => item.TopicID !== SubTopicIDToDelete
         );
         setTopic(updatedTopic);
       })
@@ -168,6 +170,13 @@ function SubTopicTable() {
         console.error("Error deleting data:", error);
       });
   };
+
+    // handleUpdate
+    const handleUpdate = (e) => {
+      const topicIDToUpdate = e.data.SubTopicID;
+      console.log(topicIDToUpdate);
+      navigate(`/subtopic/subtopicform?id=${topicIDToUpdate}`)
+    };
 
   return (
     <div>
@@ -200,42 +209,13 @@ function SubTopicTable() {
           cellRender={(cellData) => {
             return (
               <>
-                <label className="btn btn-sm btn-info btn-outline duration-200"
-                  htmlFor="my_modal_7"
-                >
-                  
-                  <RiEditBoxLine className="w-5 h-8" />
-                </label>
-
-                {/* Put this part before </body> tag */}
-                <input
-                  type="checkbox"
-                  id="my_modal_7"
-                  className="modal-toggle"
-                />
-                <div className="modal">
-                  <form  className="modal-box">
-                    <p className="py-4">Update Your Topic</p>
-                    <p>Topic Name</p>
-                    <input
-
-                      type="text"
-                      name="name"
-                      placeholder="Enter Topic Name"
-                      className="input input-bordered w-full max-w-xs"
-                    />
-
-                    <input
-                      className="btn btn-primary mx-2"
-                      type="submit"
-                      value={"submit"}
-                    />
-                  </form>
-                  <label className="modal-backdrop" htmlFor="my_modal_7">
-                    Close
-                  </label>
-                </div>
-              </>
+              <label className="btn btn-sm btn-info btn-outline duration-200"
+                onClick={() => handleUpdate(cellData.row)}
+                htmlFor="my_modal_7"
+              >
+                 <RiEditBoxLine className="w-5 h-8" />
+              </label>
+            </>
             );
           }}
         />

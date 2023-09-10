@@ -78,6 +78,7 @@ function Tabile() {
   // handleUpdate
   const handleUpdate = (e) => {
     const topicIDToUpdate = e.data.TopicID;
+    console.log(topicIDToUpdate);
     navigate(`/topic/topicFrom?id=${topicIDToUpdate}`)
   };
 
