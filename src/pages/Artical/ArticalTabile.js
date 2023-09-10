@@ -221,6 +221,67 @@ function ArticalTabile() {
         <Column dataField="header" />
         <Column dataField="abstract" />
         <Column dataField="embed" />
+        <Column
+          caption="Action"
+          width={100}
+          alignment="center"
+          cellRender={(cellData) => {
+            return (
+              <>
+                <label className="btn btn-sm btn-primary btn-outline duration-200"
+                  htmlFor="my_modal_7"
+                >
+                  Edit
+                </label>
+
+                {/* Put this part before </body> tag */}
+                <input
+                  type="checkbox"
+                  id="my_modal_7"
+                  className="modal-toggle"
+                />
+                <div className="modal">
+                  <form  className="modal-box">
+                    <p className="py-4">Update Your Topic</p>
+                    <p>Topic Name</p>
+                    <input
+
+                      type="text"
+                      name="name"
+                      placeholder="Enter Topic Name"
+                      className="input input-bordered w-full max-w-xs"
+                    />
+
+                    <input
+                      className="btn btn-primary mx-2"
+                      type="submit"
+                      value={"submit"}
+                    />
+                  </form>
+                  <label className="modal-backdrop" htmlFor="my_modal_7">
+                    Close
+                  </label>
+                </div>
+              </>
+            );
+          }}
+        />
+        <Column
+          caption="Action"
+          width={100}
+          alignment="center"
+          cellRender={(cellData) => {
+            return (
+              <button
+              className="btn btn-sm btn-error btn-outline duration-50 btn-delete" 
+               
+                
+              >
+                Delete
+              </button>
+            );
+          }}
+        />
         {/* <Column
           caption="Action"
           width={100}

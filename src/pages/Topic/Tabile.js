@@ -12,12 +12,15 @@ import { exportDataGrid } from "devextreme/pdf_exporter";
 import { Workbook } from "exceljs";
 import { saveAs } from "file-saver-es"; // Use 'file-saver-es' as you mentioned
 import { exportDataGrid as exportDataGridExcel } from "devextreme/excel_exporter";
+import { useNavigate } from "react-router-dom";
+
 
 const exportFormats = ["pdf", "xlsx"]; // Add both export formats
 
 function Tabile() {
   const [topic, setTopic] = useState([]);
   const [updateName, setUpdateName] = useState("");
+  const navigate = useNavigate()
 
   // demo text name
   const [demo, setDemo] = useState();
@@ -117,6 +120,7 @@ function Tabile() {
 
     setDemo(topicName1);
     setUpdateName(topicIDToUpdate);
+    navigate(`/topic/topicFrom?id=${topicIDToUpdate}`)
   };
 
   const onExporting = (e) => {
@@ -246,7 +250,7 @@ function Tabile() {
           cellRender={(cellData) => {
             return (
               <>
-                <label
+                <label className="btn btn-sm btn-primary btn-outline duration-200"
                   onClick={() => handleUpdate(cellData.row)}
                   htmlFor="my_modal_7"
                 >
@@ -292,8 +296,9 @@ function Tabile() {
           cellRender={(cellData) => {
             return (
               <button
+              className="btn btn-sm btn-error btn-outline duration-50 btn-delete" 
                 onClick={() => handleDeleteClick(cellData.row)}
-                className="btn-delete"
+                
               >
                 Delete
               </button>

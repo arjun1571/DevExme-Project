@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const TopicFrom = () => {
   const [isToggled, setIsToggled] = useState(false);
+  const [topic, setTopic] = useState([]);
+  const [updateName, setUpdateName] = useState("");
+  const [defaultValue,setDefaultValue]=useState()
+  const location = useLocation()
 
   const handleToggle = () => {
     setIsToggled(!isToggled);
     console.log(isToggled);
   };
+  const quearyString = location.search;
+  const queryParams = new URLSearchParams(quearyString);
+
+  const id = queryParams.get('id')
+  console.log('arjun', id)
+
+
+  useEffect(()=>{
+    fetch(`http://localhost:3000/topic/${id}`)
+    .then(res=>res.json())
+    .then(data=>{
+      // console.log(data);
+      setDefaultValue(data)
+    })
+  },[id])
+
+  console.log(defaultValue);
 
   const handleList = async (event) => {
     // create a date
@@ -85,13 +107,124 @@ const TopicFrom = () => {
 
     event.target.reset();
   };
+
+  // edit data 
+
+  const updateData = (event) => {
+    let date = new Date();
+    let date1 = date.toString();
+    let date2 = date1.split(" ");
+    const finaldate = date2.slice(1, 4);
+    const fullFinalData = finaldate.join("-");
+
+    const YYYY_MM_DD_Formater = (date, format = "YYYY-MM-DD") => {
+      const t = new Date(date);
+      const y = t.getFullYear();
+      const m = ("0" + (t.getMonth() + 1)).slice(-2);
+      const d = ("0" + t.getDate()).slice(-2);
+      return format.replace("YYYY", y).replace("MM", m).replace("DD", d);
+    };
+    const formateDate = YYYY_MM_DD_Formater(fullFinalData);
+
+// update input value 
+
+    event.preventDefault();
+    const from = event?.target;
+    const Name = from?.name?.value;
+    const position = from?.position?.value;
+    const news = from?.news?.value;
+    const articale = from?.articale?.value;
+    const highlight = from?.highlight?.value;
+    const description = from?.description?.value;
+    const heading = from?.heading?.value;
+    const mainHeading = from?.main?.value;
+    const menuFlag = from?.menuFlag?.value;
+    const uploadLogo = from?.uploadLogo?.value;
+    const navLogo = from?.navLogo?.value;
+    const isActive = isToggled;
+    const sequence = "";
+    const createdBy = "";
+    const CreatedOn = formateDate;
+    const editOn = "";
+
+
+
+    const updateData = {
+      Name,
+      position,
+      news,
+      articale,
+      highlight,
+      description,
+      heading,
+      mainHeading,
+      menuFlag,
+      uploadLogo,
+      navLogo,
+      sequence,
+      createdBy,
+      CreatedOn,
+      editOn,
+      isActive,
+    };
+    // const name = event.target.name.value;
+    // console.log('ok',name);
+    // const topicIDToUpdate = event?.data?.TopicID;
+    // const topicName1 = event?.data?.Name;
+    // console.log("hello", topicIDToUpdate);
+    // console.log("hello2", topicName1);
+
+    fetch(`http://localhost:3000/topic/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Handle the updated data as needed
+        alert("Data updated successfully");
+
+        // Update the state with the new data
+        const updatedTopics = topic.map((item) => {
+          if (item.TopicID === updateName) {
+            return { ...item, updateData };
+          }
+          return item;
+        });
+
+        setTopic(updatedTopics);
+        setUpdateName(""); // Clear the updateName state
+      })
+      .catch((error) => {
+        console.error("Error updating data:", error);
+      });
+
+    event.target.reset();
+  };
+
+  // marge handle submit 
+  const margeSubmit =(event)=>{
+    event.preventDefault();
+    if(id=== null){
+      handleList(event);
+    }
+    else{
+      updateData(event);
+    }
+
+
+  }
+
   return (
-    <form onSubmit={handleList} className="my-10">
+    <form onSubmit={margeSubmit} className="my-10">
       <p className="font-bold text-2xl mx-6 lg:px-40">Create a Topic List</p>
       <div className="grid grid-cols-2 lg:px-40">
         <div>
           <p className="my-2 mx-6 mt-5">Topic Name</p>
           <input
+          defaultValue={defaultValue?.Name}
             required
             name="name"
             type="text"
@@ -102,6 +235,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">Position</p>
           <input
+          defaultValue={defaultValue?.position}
             required
             name="position"
             type="text"
@@ -112,6 +246,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">News</p>
           <input
+          defaultValue={defaultValue?.news}
             required
             name="news"
             type="text"
@@ -122,6 +257,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 lg:mx-6 mt-5">Ariticales</p>
           <input
+          defaultValue={defaultValue?.articale}
             required
             name="articale"
             type="text"
@@ -130,8 +266,9 @@ const TopicFrom = () => {
           />
         </div>
         <div>
-          <p className="my-2 mx-6 mt-5">Highlights</p>
+          <p className="my-2 mx-6 mt-5">highlight</p>
           <input
+          defaultValue={defaultValue?.articale}
             required
             name="highlight"
             type="text"
@@ -142,6 +279,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">Description</p>
           <input
+          defaultValue={defaultValue?.description}
             required
             name="description"
             type="text"
@@ -152,6 +290,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">Main Heading</p>
           <input
+          defaultValue={defaultValue?.mainHeading}
             required
             name="main"
             type="text"
@@ -162,6 +301,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">MenuFlag</p>
           <input
+          defaultValue={defaultValue?.menuFlag}
             required
             name="menuFlag"
             type="text"
@@ -173,6 +313,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">Upload Logo</p>
           <input
+          defaultValue={defaultValue?.uploadLogo}
             required
             name="uploadLogo"
             type="text"
@@ -183,6 +324,7 @@ const TopicFrom = () => {
         <div>
           <p className="my-2 mx-6 mt-5">Upload Nav Logo</p>
           <input
+          defaultValue={defaultValue?.navLogo}
             required
             name="navLogo"
             type="text"
